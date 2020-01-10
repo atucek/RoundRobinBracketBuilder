@@ -18,7 +18,7 @@ var mapp = new Vue({
     data: {
         message1: 'Select the tournament type',
         message2: 'Add new player',
-        message3: 'All test below here...',
+        message3: 'All test below here.',
         food: 'cookie',
         tree: 'pine',
         numberofplayers: '5',
