@@ -67,6 +67,7 @@ var mapp = new Vue({
                 rounds = playersCount-1;  
                 //"firstIndex" starts at 1 because the first element in the array is not moving
                 firstIndex = 1;    
+                itterations = playersCount;
                 
                 
                 while (rounds > 0) {
@@ -74,15 +75,23 @@ var mapp = new Vue({
                     //first pair
                     nonmovingPlayer = this.playerList[0];
                     lastPlayer = this.playerList[lastIndex];
-                
+                   
                     //
-                    while (playersCount > 0) {
+                    while (itterations > 0) {
 
                         if (firstIndex < lastIndex) 
                         {
-                            // match teh current pair
+                            // we already have the first pair, adjust the array index for the next pair
+                            firstIndex++;
+                            lastIndex--;
 
 
+                            // var player = "";
+                            this.matches.push({
+                                player1: this.playerList[firstIndex],
+                                player2: this.playerList[lastIndex]
+                            })
+                            console.log(this.playerList);
                         }
                         else
                         {
@@ -90,19 +99,9 @@ var mapp = new Vue({
 
                             
                         }
-                        /*
-                            //get the first
-                            p1 = this.playerList[firstIndex].name;
-
-                            //get the last
-                            p2 = this.playerList[lastIndex].name;
-
-
-                        */
-
-                        playersCount--;
+                        
+                        itterations--;
                     }
-
 
                     rounds--;
                 }
