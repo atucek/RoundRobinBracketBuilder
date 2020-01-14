@@ -29,8 +29,8 @@ var mapp = new Vue({
         ],
 
         matches: [
-            {player1: 'aa', player2: 'bb'},
-            {player1: 'bb', player2: 'cc'}
+            {player1: 'aa', player2: 'bb', round: 0},
+            {player1: 'bb', player2: 'cc', round: 1}
         ]
 
     },
@@ -57,11 +57,82 @@ var mapp = new Vue({
             clearPlayerList: function () {
 
                 this.playerList = [];
+                
             },
 
             createRoudRobinMatches: function () {
 
+                //clear "matches" array
+                this.matches = [];
+                //setup internal variables
+                playersCount = this.playerList.length;
+                roundNumber = playersCount-1;
+                
+                while(roundNumber > 0) {
+
+                    firstPlayerIndex = 0;
+                    lastPlayerIndex = playersCount - 1;
                    
+
+                    //start creating matches, go through an itteration (create matches using all teams in the current array of teams)
+                    while(firstPlayerIndex < lastPlayerIndex) {
+
+                        var p1 = this.playerList[firstPlayerIndex];
+                        var p2 = this.playerList[lastPlayerIndex];
+                        //for testing
+                        console.log("Round " + roundNumber + ": " + p1.name + " vs. " + p2.name);
+
+                        this.matches.push({
+                            player1: p1.name,
+                            player2: p2.name,
+                            round: roundNumber
+                        })
+
+                        //for testing 
+                        //console.log("Round =" + roundNumber + ", 1st Player Name =" + this.matches[0][0] + ", 2nd Player Name =" + this.matches[0][1] );
+
+                        firstPlayerIndex++;
+                        lastPlayerIndex--;
+                    }
+
+                    //******START CODE HERE, REBUILD THE ARRAY!!!
+                    
+                    // get the last array element
+                    var element = this.playerList[playersCount-1];
+                    //splice (delete?) the last array element (it was saved in the previous step)
+                    this.playerList.splice(playersCount-1);
+                    //insert the saved (last) element in the second possition (array[1])
+                    this.playerList.splice(1,0,element);
+
+                    // for testing, show current array
+                    //console.log(this.playerList);
+                    //*******END CODE HERE, REBUILD THE ARRAY!!!
+
+                    roundNumber--;
+                }
+
+                //for testing print array
+                for (var i in this.matches)
+                {
+                    console.log("Match " + i+1);
+                        for (var j in this.matches[i])
+                        {
+                            console.log(" " + this.matches[i][j]);
+                        }
+
+                }
+
+                // for testing, show current array
+                console.log(this.matches);
+
+
+
+
+
+
+
+
+            /* FIRST VERSION - NOT WORKING WELL, NOT FINISHED *****       
                 playersCount = this.playerList.length;
                 lastIndex = playersCount-1;
                 rounds = playersCount-1;  
@@ -105,13 +176,15 @@ var mapp = new Vue({
 
                     rounds--;
                 }
-
+            ********************************/
 
                 // for testing purposes
                 //console.log(this.playerList.length);    
                 //console.log(this.playerList[0].name);
+                /* for testing purposes
                 console.log(nonmovingPlayer);
                 console.log(lastPlayer);
+                */
 
 
             }
