@@ -41,23 +41,84 @@
 <body>
 
     <div class="container">
-        <div class="row">
-            <h1>Hello world, Bootstrap is here!</h1>  
-
-            <p class="lead">  
-                <h1 class="lead">TM: by ME!</h1>
-            </p>  
-        </div>
-
-        <div class="row">
-            <div id="main">
-                <h1>Today is: <h3>{{foo}}</h3></h1>
+        <div class="jumbotron">
+            <div class="row justify-content-md-center">
+                <h1>Round Robin Bracket Generator!</h1>  
+                <p class="lead">  
+                    <h1 class="lead">TM: by ME!</h1>
+                </p>  
             </div>
-          
+
+            <div class="row">
+                <div class="col-2">         
+                    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                        Got time?
+                    </button>
+                </div>
+                <div class="column">
+                    <div id="main" >
+                        <p class="collapse" id="collapseExample">It is {{foo}} </p>
+                        <hr class="my-4">
+                    </div>
+                </div>
+            
+            </div>
+        </div> 
+    </div>
+
+    <div class="container shadow-sm  mb-5" id="">
+        <div class="row mb-5">
+            <div class="col-3">
+                Row..
+            </div>
+            <div class="col-3 ">
+                .. column 2 ...
+            </div>
+            <div class="col-6">
+                ... with shadow and padding-bottom
+            </div>
+
+        </div>
+        <div class="row"> 
+            <div class="col">    
+                test
+            </div>
         </div>
 
-        
+        <div class="card-deck mb-3 text center">
+            <div class="card mb-4 shadow-sm">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">1 - Select Bracket Type</h4>
+                </div>
+                <div class="card-body">
+                    <p>drop down here</p>
+                </div>
+            </div>
+            <div class="card mb-4 shadow-sm">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">2 - Enter Players Number</h4>
+                </div>
+                <div class="card-body">
+                    <p>stuff goes here</p>
+                </div>
+            </div>
+            <div class="card mb-4 shadow-sm">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">3 - Generate Brackets</h4>
+                </div>
+                <div class="card-body">
+                    <p>stuff goes here</p>
+                </div>
+            </div>
+            
+
+        </div>
+
     </div>
+
+
+
+
 
 
     <div class="container" id="inputs">
@@ -130,6 +191,21 @@
         <div class="row">
             <div class="column-6">
                 <button class="btn btn-primary" @click='createRoudRobinMatches'>Build Matches</button>
+
+            </div>
+
+            <div class="column-6">
+                
+                    Matches list:
+                    <!-- {{matches[0].player1}} vs. {{matches[0].player2}} -->
+        
+                    <!-- <li v-for="(match, index) in matches" v-if="index == match.round"> NOT WORKING AS INTENDED-->
+
+                        <li v-for="match in matches">
+                            {{ match.player1 }} vs. {{ match.player2 }}, Round #{{ match.round }}
+            
+                        </li>
+                    <!-- </li> -->
 
             </div>
         </div>

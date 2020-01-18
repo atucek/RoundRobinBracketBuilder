@@ -21,7 +21,7 @@ var mapp = new Vue({
         message3: 'All test below here.',
         food: 'cookie',
         tree: 'pine',
-        numberofplayers: '5',
+        numberofplayers: 'enter here',
 
         playerList: [
             { name:'Temp1', id:0},
@@ -110,6 +110,8 @@ var mapp = new Vue({
 
                     roundNumber--;
                 }
+
+
 
                 //for testing print array
                 for (var i in this.matches)
