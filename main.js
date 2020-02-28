@@ -17,11 +17,11 @@ var mapp = new Vue({
 
     data: {
         message1: 'Select the tournament type',
-        message2: 'Add new player',
+        message2: '',
         message3: 'All test below here.',
         food: 'cookie',
         tree: 'pine',
-        numberofplayers: 'enter here',
+        numberofplayers: '',
 
         playerList: [
             { name:'Temp1', id:0},

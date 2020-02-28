@@ -66,7 +66,7 @@
         </div> 
     </div>
 
-    <div class="container shadow-sm  mb-5" id="">
+    <div class="container shadow-sm  mb-5" id="inputs">
         <div class="row mb-5">
             <div class="col-3">
                 Row..
@@ -77,7 +77,6 @@
             <div class="col-6">
                 ... with shadow and padding-bottom
             </div>
-
         </div>
         <div class="row"> 
             <div class="col">    
@@ -91,38 +90,69 @@
                     <h4 class="my-0 font-weight-normal">1 - Select Bracket Type</h4>
                 </div>
                 <div class="card-body">
-                    <p>drop down here</p>
+                    <div class="row">
+                        <div class="col-4">Select:</div>
+                        <div class="col-8">
+                            <select id="combo" name="bracket">
+                                <option value="single">Single Elimination</option>
+                                <option value="double">Double Elimination</option>
+                                <option value="round" selected>Round Robin</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="card mb-4 shadow-sm">
                 <div class="card-header">
-                    <h4 class="my-0 font-weight-normal">2 - Enter Players Number</h4>
+                    <h4 class="my-0 font-weight-normal">2 - How Many Players?</h4>
                 </div>
                 <div class="card-body">
-                    <p>stuff goes here</p>
+                    <div class="col-12">
+                        <input type="text" v-model="numberofplayers" placeholder="Enter">
+                        <button class="btn btn-primary mr-3" @click="updatePlayerList">Add</button> 
+                    </div>                
                 </div>
             </div>
             <div class="card mb-4 shadow-sm">
                 <div class="card-header">
-                    <h4 class="my-0 font-weight-normal">3 - Generate Brackets</h4>
+                    <h4 class="my-0 font-weight-normal">2 - Manually Add Players</h4>
                 </div>
                 <div class="card-body">
-                    <p>stuff goes here</p>
+                    <div class="col-12">                 
+                        <input id="input" type="text" v-model="message2" placeholder="Add player name"> 
+                        <button class="btn-primary mr-3" @click="">Add</button>
+                    </div>
+                       
                 </div>
             </div>
             
-
         </div>
+        
+
+        <div class="pt-5 pb-3 shadow">
+            <button class="btn btn-primary" @click="clearPlayerList">Reset </button> 
+            <li v-for="player in playerList">
+                {{ player.name }}
+            </li>
+        </div>
+
+        <div>
+            <button class="btn btn-primary" @click='createRoudRobinMatches'>Build Matches</button>
+            <li v-for="match in matches">
+                {{ match.player1 }} vs. {{ match.player2 }}, Round #{{ match.round }}
+            </li>
+        </div>
+
 
     </div>
 
 
 
+<!--  
 
 
-
-    <div class="container" id="inputs">
-        <!-- <h1>Output any text with mustache variable... {{food}}</h1> -->
+    <div class="container" id="inputs_REMOVEthisPART">
+        <h1>Output any text with mustache variable... {{food}}</h1>
         
         <div class="row">
             <div class="col-2">
@@ -197,22 +227,16 @@
             <div class="column-6">
                 
                     Matches list:
-                    <!-- {{matches[0].player1}} vs. {{matches[0].player2}} -->
-        
-                    <!-- <li v-for="(match, index) in matches" v-if="index == match.round"> NOT WORKING AS INTENDED-->
-
                         <li v-for="match in matches">
                             {{ match.player1 }} vs. {{ match.player2 }}, Round #{{ match.round }}
             
                         </li>
-                    <!-- </li> -->
-
             </div>
         </div>
 
-
+    -->
        
-        <div id="inputs"> <h2 class="jumbotron shadow"> {{ message3 }} </h2>
+        <div id="inputs_REMOVEthisPART"> <h2 class="jumbotron shadow"> {{ message3 }} </h2>
 
             <div class="row justify-content-md-center">
                 <button class="btn btn-primary mr-3" @click="updatePlayerList">Build Player List</button> 
