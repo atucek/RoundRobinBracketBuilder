@@ -67,12 +67,18 @@
     </div>
 
     <div class="container shadow-sm  mb-5" id="inputs">
+
+
+
         <div class="row mb-5">
             <div class="col-3">
                 Row..
             </div>
             <div class="col-3 ">
-                .. column 2 ...
+                .. column 2 ... 
+                <div>
+                    <button-counter></button-counter> <!-- Vue Component -->
+                </div>
             </div>
             <div class="col-6">
                 ... with shadow and padding-bottom
@@ -80,7 +86,7 @@
         </div>
         <div class="row"> 
             <div class="col">    
-                test
+                test - full row.... <div><match-component></match-component></div>
             </div>
         </div>
 
@@ -138,9 +144,29 @@
 
         <div>
             <button class="btn btn-primary" @click='createRoudRobinMatches'>Build Matches</button>
-            <li v-for="match in matches">
+        </div>
+        
+        <div>
+            <!-- Plain Vue (not using Components)-->
+            <!-- 
+                <li v-for="match in matches"> 
                 {{ match.player1 }} vs. {{ match.player2 }}, Round #{{ match.round }}
             </li>
+            -->
+            <!-- Vue using Components -->
+                           
+
+
+            <match-component v-for="match in matches" :match="match"> </match-component>
+
+                    
+
+        </div>
+
+        <div>
+            
+            
+            
         </div>
 
 
@@ -253,6 +279,8 @@
             <div><input id="inputs" type="text" v-model="message2"></div>
             <div><input id="inputs" type="text" v-model="message2"></div> -->    
         </div>
+
+
 
 
 

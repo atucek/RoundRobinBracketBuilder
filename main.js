@@ -11,6 +11,36 @@ var app = new Vue({
 });
 
 
+Vue.component('button-counter', {
+    data: function () {
+      return {
+        count: 0
+      }
+    },
+    template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
+  });
+
+
+Vue.component('match-component', {
+    template: 
+    `  
+
+        <div class="list-group-item bg-primary text-white">
+
+            {{ match.player1 }} vs. {{ match.player2 }}, Round #{{ match.round }}
+
+        </div>
+
+    `,
+    props: {
+      match: Object
+    }
+  });
+
+
+
+
+
 
 var mapp = new Vue({
     el: '#inputs',
@@ -194,3 +224,4 @@ var mapp = new Vue({
 
 
 });
+
