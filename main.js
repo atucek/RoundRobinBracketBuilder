@@ -24,13 +24,13 @@ Vue.component('button-counter', {
 Vue.component('match-component', {
     template: 
     `  
-
-        <div class="list-group-item bg-primary text-white">
-
-            {{ match.player1 }} vs. {{ match.player2 }}, Round #{{ match.round }}
-
+        <div class="row ">
+            <div class="col-3">
+                <div class="list-group-item bg-primary text-white">
+                    {{ match.player1 }} vs. {{ match.player2 }}, Round #{{ match.round }}
+                </div>
+            </div>
         </div>
-
     `,
     props: {
       match: Object
@@ -38,7 +38,8 @@ Vue.component('match-component', {
   });
 
 
-
+  import { BButton } from 'bootstrap-vue'
+  Vue.component('b-button', BButton)
 
 
 
